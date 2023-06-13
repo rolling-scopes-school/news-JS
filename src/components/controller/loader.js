@@ -4,7 +4,7 @@ class Loader {
         this.options = options;
     }
 
-    doRequest(
+    getResp(
         { endpoint, options = {} },
         callback = () => {
             console.error('No callback for GET response');

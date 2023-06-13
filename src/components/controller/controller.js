@@ -2,7 +2,7 @@ import AppLoader from './appLoader';
 
 class AppController extends AppLoader {
     getSources() {
-        return super.doRequest(
+        return super.getResp(
             {
                 endpoint: 'sources',
             }
@@ -18,7 +18,7 @@ class AppController extends AppLoader {
                 const sourceId = target.getAttribute('data-source-id');
                 if (newsContainer.getAttribute('data-source') !== sourceId) {
                     newsContainer.setAttribute('data-source', sourceId);
-                    return super.doRequest(
+                    return super.getResp(
                         {
                             endpoint: 'everything',
                             options: {
