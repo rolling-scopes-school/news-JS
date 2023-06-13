@@ -4,7 +4,7 @@ class AppController extends AppLoader {
     getSources() {
         return super.getResp(
             {
-                endpoint: 'sources',
+                endpoint: 'sources'
             }
         );
     }
@@ -23,7 +23,7 @@ class AppController extends AppLoader {
                             endpoint: 'everything',
                             options: {
                                 sources: sourceId,
-                            },
+                            }
                         }
                     );
                 }

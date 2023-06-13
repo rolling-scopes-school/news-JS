@@ -4,12 +4,7 @@ class Loader {
         this.options = options;
     }
 
-    getResp(
-        { endpoint, options = {} },
-        callback = () => {
-            console.error('No callback for GET response');
-        }
-    ) {
+    getResp({ endpoint, options = {} }) {
         return this.load('GET', endpoint, options);
     }
 
