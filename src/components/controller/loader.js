@@ -2,9 +2,10 @@ class Loader {
     constructor(baseLink, options) {
         this.baseLink = baseLink;
         this.options = options;
+        this.errorHandler = this.errorHandler.bind(this);
     }
 
-    getResp(
+    doRequest(
         { endpoint, options = {} },
         callback = () => {
             console.error('No callback for GET response');
