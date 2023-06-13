@@ -1,16 +1,15 @@
 import AppLoader from './appLoader';
 
 class AppController extends AppLoader {
-    getSources(callback) {
-        super.doRequest(
+    getSources() {
+        return super.doRequest(
             {
                 endpoint: 'sources',
-            },
-            callback
+            }
         );
     }
 
-    getNews(e, callback) {
+    getNews(e) {
         let target = e.target;
         const newsContainer = e.currentTarget;
 
@@ -19,17 +18,16 @@ class AppController extends AppLoader {
                 const sourceId = target.getAttribute('data-source-id');
                 if (newsContainer.getAttribute('data-source') !== sourceId) {
                     newsContainer.setAttribute('data-source', sourceId);
-                    super.doRequest(
+                    return super.doRequest(
                         {
                             endpoint: 'everything',
                             options: {
                                 sources: sourceId,
                             },
-                        },
-                        callback
+                        }
                     );
                 }
-                return;
+                return Promise.resolve({});
             }
             target = target.parentNode;
         }
