@@ -6,14 +6,15 @@
     "scripts": {
         "start": "webpack serve --open --config ./webpack.config.js --env mode=dev",
         "build": "webpack --config ./webpack.config.js --env mode=prod",
-        "lint": "eslint . --ext .ts"
+        "lint": "eslint . --ext .ts",
+        "build_ts": "tsc"
     },
     "repository": {
         "type": "git",
         "url": ""
     },
     "keywords": [],
-    "author": "Aleh Serhiyenia",
+    "author": "Siarhei Trapeznikau",
     "license": "ISC",
     "homepage": "",
     "devDependencies": {
@@ -21,13 +22,15 @@
         "copy-webpack-plugin": "^12.0.2",
         "css-loader": "^6.10.0",
         "dotenv-webpack": "^8.0.1",
-        "eslint": "^8.56.0",
+        "eslint": "^8.57.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-import": "^2.29.1",
         "eslint-plugin-prettier": "^5.1.3",
         "html-webpack-plugin": "^5.6.0",
         "prettier": "3.2.5",
         "style-loader": "^3.3.4",
+        "typescript": "^5.3.3",
+        "typescript-eslint": "^7.0.2",
         "webpack": "^5.90.3",
         "webpack-cli": "^5.1.4",
         "webpack-dev-server": "^5.0.0",
