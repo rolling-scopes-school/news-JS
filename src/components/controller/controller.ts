@@ -30,9 +30,9 @@ class AppController {
         this._appLoader.getResp<Data>(query, callback);
     }
 
-    getNews(e, callback: ((data: NewsData) => void)) {
-        let target = e.target;
-        const newsContainer = e.currentTarget;
+    getNews(e: Event, callback: ((data: NewsData) => void)) {
+        let target = e.target as HTMLElement;
+        const newsContainer = e.currentTarget as HTMLElement;
 
         while (target !== newsContainer) {
             if (target.classList.contains('source__item')) {
@@ -52,7 +52,7 @@ class AppController {
                 }
                 return;
             }
-            target = target.parentNode;
+            target = target.parentNode as HTMLElement;
         }
     }
 }
