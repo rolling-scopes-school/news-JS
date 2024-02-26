@@ -46,8 +46,8 @@ export interface Source {
 }
 
 export interface Loader {
-    getResp(endpoint: Query, callback: (() => void) | undefined): void;
+    getResp<T>(endpoint: Query, callback: (data: T) => void): void;
     errorHandler(response: Response): Response;
     makeUrl(query: Query): URL;
-    load(method: RequestInit, endpoint: Query, callback: (data: NewsData | Data) => void): void;
+    load<T>(method: RequestInit, endpoint: Query, callback: (data: T) => void): void;
 }

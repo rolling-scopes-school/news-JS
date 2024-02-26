@@ -1,6 +1,6 @@
-import {Loader, Query, Options}   from './loader';
+import { Loader, Query, Options, Data, NewsData } from './loader';
 
-class AppLoader implements Loader{
+class AppLoader implements Loader {
     private _baseLink: string;
     private _options: Options;
 
@@ -9,12 +9,12 @@ class AppLoader implements Loader{
         this._options = options;
     }
 
-    getResp(query: Query,
-        callback = () => {
+    getResp<T>(query: Query,
+        callback: (data: T) => void = () => {
             console.error('No callback for GET response');
         }
     ) {
-        this.load({method: 'Get'}, query, callback);
+        this.load<T>({ method: 'Get' }, query, callback);
     }
 
     errorHandler(response: globalThis.Response): globalThis.Response {
@@ -38,7 +38,7 @@ class AppLoader implements Loader{
         return new URL(url.slice(0, -1));
     }
 
-    load(method: RequestInit, query: Query, callback) {
+    load<T>(method: RequestInit, query: Query, callback: (data: T) => void): void {
         fetch(this.makeUrl(query), method)
             .then(this.errorHandler)
             .then((res) => res.json())

@@ -1,4 +1,3 @@
-import App from '../app/app';
 import AppLoader from './appLoader';
 import { Data, NewsData, Options, Query } from './loader';
 
@@ -24,14 +23,14 @@ class AppController {
         this._appLoader = new AppLoader(apiBaseUrl, options);
     }
 
-    getSources(callback) : void {
+    getSources(callback: ((data: Data) => void)) : void {
         const query: Query = {
             endpoint: 'sources',
         }
-        this._appLoader.getResp(query, callback);
+        this._appLoader.getResp<Data>(query, callback);
     }
 
-    getNews(e, callback) {
+    getNews(e, callback: ((data: NewsData) => void)) {
         let target = e.target;
         const newsContainer = e.currentTarget;
 
@@ -49,7 +48,7 @@ class AppController {
                             sources: sourceId,
                         },
                     };
-                    this._appLoader.getResp(query, callback);
+                    this._appLoader.getResp<NewsData>(query, callback);
                 }
                 return;
             }
