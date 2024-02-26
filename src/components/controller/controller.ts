@@ -1,8 +1,31 @@
+import App from '../app/app';
 import AppLoader from './appLoader';
+import { Options } from './loader';
 
-class AppController extends AppLoader {
+declare global {
+    namespace NodeJS {
+      interface ProcessEnv {
+        [key: string]: string | undefined;
+        API_KEY: string;
+        API_URL: string;
+      }
+    }
+  }
+
+class AppController {
+    private _appLoader: AppLoader;
+
+    constructor() {
+        const apiBaseUrl = process.env.API_URL;
+        const apiKey = process.env.API_KEY;
+        const options: Options =  {
+            apiKey: apiKey
+        }
+        this._appLoader = new AppLoader(apiBaseUrl, options);
+    }
+
     getSources(callback) {
-        super.getResp(
+        this._appLoader.getResp(
             {
                 endpoint: 'sources',
             },
@@ -19,7 +42,7 @@ class AppController extends AppLoader {
                 const sourceId = target.getAttribute('data-source-id');
                 if (newsContainer.getAttribute('data-source') !== sourceId) {
                     newsContainer.setAttribute('data-source', sourceId);
-                    super.getResp(
+                    this._appLoader.getResp(
                         {
                             endpoint: 'everything',
                             options: {

@@ -1,10 +1,49 @@
-import Loader from './loader';
+import {Loader, Query, Options}   from './loader';
 
-class AppLoader extends Loader {
-    constructor() {
-        super(process.env.API_URL, {
-            apiKey: process.env.API_KEY,
+class AppLoader implements Loader{
+    private _baseLink: string;
+    private _options: Options;
+
+    constructor(baseLink: string, options: Options) {
+        this._baseLink = baseLink;
+        this._options = options;
+    }
+
+    getResp(query: Query,
+        callback = () => {
+            console.error('No callback for GET response');
+        }
+    ) {
+        this.load({method: 'Get'}, query, callback);
+    }
+
+    errorHandler(response: globalThis.Response): globalThis.Response {
+        if (!response.ok) {
+            if (response.status === 401 || response.status === 404)
+                console.log(`Sorry, but there is ${response.status} error: ${response.statusText}`);
+            throw Error(response.statusText);
+        }
+
+        return response;
+    }
+
+    makeUrl(query: Query): URL {
+        const urlOptions: Options = { ...this._options, ...query.options };
+        let url = `${this._baseLink}${query.endpoint}?`;
+
+        Object.keys(urlOptions).forEach((key) => {
+            url += `${key}=${urlOptions[key as keyof typeof urlOptions]}&`;
         });
+
+        return new URL(url.slice(0, -1));
+    }
+
+    load(method: RequestInit, query: Query, callback) {
+        fetch(this.makeUrl(query), method)
+            .then(this.errorHandler)
+            .then((res) => res.json())
+            .then((data) => callback(data))
+            .catch((err) => console.error(err));
     }
 }
 
