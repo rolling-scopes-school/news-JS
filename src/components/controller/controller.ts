@@ -1,16 +1,16 @@
 import App from '../app/app';
 import AppLoader from './appLoader';
-import { Options } from './loader';
+import { Data, NewsData, Options, Query } from './loader';
 
 declare global {
     namespace NodeJS {
-      interface ProcessEnv {
-        [key: string]: string | undefined;
-        API_KEY: string;
-        API_URL: string;
-      }
+        interface ProcessEnv {
+            [key: string]: string | undefined;
+            API_KEY: string;
+            API_URL: string;
+        }
     }
-  }
+}
 
 class AppController {
     private _appLoader: AppLoader;
@@ -18,19 +18,17 @@ class AppController {
     constructor() {
         const apiBaseUrl = process.env.API_URL;
         const apiKey = process.env.API_KEY;
-        const options: Options =  {
+        const options: Options = {
             apiKey: apiKey
         }
         this._appLoader = new AppLoader(apiBaseUrl, options);
     }
 
-    getSources(callback) {
-        this._appLoader.getResp(
-            {
-                endpoint: 'sources',
-            },
-            callback
-        );
+    getSources(callback) : void {
+        const query: Query = {
+            endpoint: 'sources',
+        }
+        this._appLoader.getResp(query, callback);
     }
 
     getNews(e, callback) {
@@ -40,17 +38,18 @@ class AppController {
         while (target !== newsContainer) {
             if (target.classList.contains('source__item')) {
                 const sourceId = target.getAttribute('data-source-id');
+                if (!sourceId) {
+                    throw new ReferenceError("No data-source-id attribute found");
+                }
                 if (newsContainer.getAttribute('data-source') !== sourceId) {
                     newsContainer.setAttribute('data-source', sourceId);
-                    this._appLoader.getResp(
-                        {
-                            endpoint: 'everything',
-                            options: {
-                                sources: sourceId,
-                            },
+                    const query: Query = {
+                        endpoint: 'everything',
+                        options: {
+                            sources: sourceId,
                         },
-                        callback
-                    );
+                    };
+                    this._appLoader.getResp(query, callback);
                 }
                 return;
             }

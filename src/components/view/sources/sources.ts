@@ -1,9 +1,14 @@
+import { SourceData } from '../../controller/loader';
 import './sources.css';
 
 class Sources {
-    draw(data) {
+    draw(data: SourceData[]) {
         const fragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector('#sourceItemTemp');
+
+        if (!sourceItemTemp) {
+            throw new ReferenceError("No sourceItemTemp element found");
+        }
 
         data.forEach((item) => {
             const sourceClone = sourceItemTemp.content.cloneNode(true);
@@ -14,7 +19,12 @@ class Sources {
             fragment.append(sourceClone);
         });
 
-        document.querySelector('.sources').append(fragment);
+        const sourceElement = document.querySelector('.sources');
+
+        if (!sourceElement) {
+            throw new ReferenceError("source element was not found");
+        }
+        sourceElement.append(fragment);
     }
 }
 

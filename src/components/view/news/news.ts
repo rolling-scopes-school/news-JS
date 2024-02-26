@@ -1,11 +1,16 @@
+import { Article, NewsData } from '../../controller/loader';
 import './news.css';
 
 class News {
-    draw(data) {
+    draw(data: Article[]) {
         const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
         const fragment = document.createDocumentFragment();
         const newsItemTemp = document.querySelector('#newsItemTemp');
+
+        if (!newsItemTemp) {
+            throw new ReferenceError("No newsItemTemp element found");
+        }
 
         news.forEach((item, idx) => {
             const newsClone = newsItemTemp.content.cloneNode(true);
@@ -30,8 +35,13 @@ class News {
             fragment.append(newsClone);
         });
 
-        document.querySelector('.news').innerHTML = '';
-        document.querySelector('.news').appendChild(fragment);
+        const newsElement = document.querySelector('.news');
+
+        if (!newsElement) {
+            throw new ReferenceError("News element was not found");
+        }
+        newsElement.innerHTML = '';
+        newsElement.appendChild(fragment);
     }
 }
 
