@@ -4,13 +4,8 @@ class Loader {
         this.options = options;
     }
 
-    getResp(
-        { endpoint, options = {} },
-        callback = () => {
-            console.error('No callback for GET response');
-        }
-    ) {
-        this.load('GET', endpoint, callback, options);
+    getResp({ endpoint, options = {} }) {
+        return this.load('GET', endpoint, options);
     }
 
     errorHandler(res) {
@@ -34,12 +29,15 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method, endpoint, callback, options = {}) {
-        fetch(this.makeUrl(options, endpoint), { method })
-            .then(this.errorHandler)
-            .then((res) => res.json())
-            .then((data) => callback(data))
-            .catch((err) => console.error(err));
+    async load(method, endpoint, options = {}) {
+      try {
+        const response = await fetch(this.makeUrl(options, endpoint), { method });
+        const withoutError = this.errorHandler(response);
+        return await withoutError.json();
+      }
+      catch(error) {
+        console.log(err);
+      }
     }
 }
 
