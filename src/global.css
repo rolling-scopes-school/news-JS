@@ -1,7 +1,18 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 body {
     color: #fff;
     background: #17181c;
     font-family: sans-serif;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    row-gap: 15px;
 }
 
 header {
@@ -13,22 +24,36 @@ header h1 {
     font-weight: 800;
 }
 
+main {
+    flex: 1;
+}
+
+.sources {
+    width: 100%;
+    display: flex;
+}
+
 footer {
     height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    row-gap: 8px;
+}
+footer p a {
+    color: white;
 }
 footer .copyright {
     font-size: 14px;
-    color: #333;
+    color: #eee;
     text-align: center;
 }
 footer .copyright a {
-    color: #444;
+    color: #ddd;
 }
 footer .copyright a:hover {
-    color: #555;
+    color: #eee;
 }
 footer .copyright:before {
     content: '©';
