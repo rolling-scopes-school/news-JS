@@ -5,7 +5,9 @@
     height: 120px;
     overflow: auto;
     align-items: center;
-    font: 300 1em 'Fira Sans', sans-serif;
+    font:
+        300 1em 'Fira Sans',
+        sans-serif;
 }
 
 .source__item {
@@ -18,6 +20,8 @@
     color: #70d6ff;
     transition: 0.25s;
     cursor: pointer;
+    border-radius: 20px;
+    box-shadow: 3px 3px 5px wheat;
 }
 
 .source__item:hover,
@@ -25,7 +29,7 @@
     border-color: #3fcc59;
     color: #69db7e;
     box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
-    transform: translateY(-0.25em);
+    transform: scale(1.1);
 }
 
 .source__item-name {
