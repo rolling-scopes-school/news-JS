@@ -1,7 +1,7 @@
 import AppLoader from './appLoader';
 
 class AppController extends AppLoader {
-    getSources(callback) {
+    getSources(callback: (data: NewsResponse) => void): void {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -10,14 +10,14 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e, callback) {
-        let target = e.target;
-        const newsContainer = e.currentTarget;
+    getNews(e: MouseEvent, callback: (data: NewsResponse) => void): void {
+        let target = e.target as HTMLElement;
+        const newsContainer = e.currentTarget as HTMLDivElement;
 
         while (target !== newsContainer) {
             if (target.classList.contains('source__item')) {
-                const sourceId = target.getAttribute('data-source-id');
-                if (newsContainer.getAttribute('data-source') !== sourceId) {
+                const sourceId: string | null = target.getAttribute('data-source-id');
+                if (newsContainer.getAttribute('data-source') !== sourceId && sourceId) {
                     newsContainer.setAttribute('data-source', sourceId);
                     super.getResp(
                         {
@@ -28,12 +28,17 @@ class AppController extends AppLoader {
                         },
                         callback
                     );
+                } else {
+                  console.error(`Error: data-source-id not found or null `, target);
                 }
                 return;
             }
-            target = target.parentNode;
+            if(target.parentNode instanceof HTMLElement){
+            target = target.parentNode as HTMLElement;
+            }
         }
     }
 }
 
 export default AppController;
+import { NewsResponse } from '../../models/interfaces';
