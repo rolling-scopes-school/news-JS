@@ -6,7 +6,7 @@ class Loader {
 
     getResp(
         { endpoint, options = {} },
-        callback = () => {
+        callback: (data: NewsResponse) => void = () => {
             console.error('No callback for GET response');
         }
     ) {
@@ -34,13 +34,14 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method, endpoint, callback, options = {}) {
+    load(method, endpoint, callback: (data: NewsResponse) => void, options = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
-            .then((data) => callback(data))
+            .then((data: NewsResponse) => callback(data))
             .catch((err) => console.error(err));
     }
 }
 
 export default Loader;
+import { NewsResponse } from '../../models/interfaces';

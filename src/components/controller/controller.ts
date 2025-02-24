@@ -1,7 +1,7 @@
 import AppLoader from './appLoader';
 
 class AppController extends AppLoader {
-    getSources(callback) {
+    getSources(callback: (data: NewsResponse) => void): void {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -10,7 +10,7 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e, callback) {
+    getNews(e: MouseEvent, callback: (data: NewsResponse) => void): void {
         let target = e.target;
         const newsContainer = e.currentTarget;
 
@@ -37,3 +37,4 @@ class AppController extends AppLoader {
 }
 
 export default AppController;
+import { NewsResponse } from '../../models/interfaces';
