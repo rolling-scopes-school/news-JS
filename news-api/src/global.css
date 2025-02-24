@@ -1,7 +1,11 @@
-body {
+html, body {
+    margin: 0;
+    padding: 0;
     color: #fff;
     background: #17181c;
     font-family: sans-serif;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 header {
@@ -13,6 +17,11 @@ header h1 {
     font-weight: 800;
 }
 
+/* .main {
+    display: flex;
+    flex-direction: row;
+} */
+
 footer {
     height: 100px;
     display: flex;
@@ -21,14 +30,14 @@ footer {
 }
 footer .copyright {
     font-size: 14px;
-    color: #333;
+    color: #444;
     text-align: center;
 }
 footer .copyright a {
-    color: #444;
+    color: #ffffffc7;
 }
 footer .copyright a:hover {
-    color: #555;
+    color: #ffda1f;
 }
 footer .copyright:before {
     content: '©';

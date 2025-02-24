@@ -2,16 +2,29 @@
     display: flex;
     flex-wrap: nowrap;
     width: 100%;
-    height: 120px;
-    overflow: auto;
-    align-items: center;
-    font: 300 1em 'Fira Sans', sans-serif;
+    height: 65px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-left: 10px;
+    padding-right: 10px;
+    scrollbar-width: none; 
+}
+
+ .sources::after {
+    content: '';
+    flex: 10 0 15px; 
+} 
+
+
+.sources::-webkit-scrollbar {
+    display: none;
 }
 
 .source__item {
     background: none;
-    border: 2px solid #30c5ff;
+    border: 2px solid #347b85;
     font: inherit;
+    border-radius: 10px;
     line-height: 1;
     margin: 0.5em;
     padding: 1em 2em;
