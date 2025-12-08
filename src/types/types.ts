@@ -62,3 +62,7 @@ Everything = 'everything',
 TopHeadLines = 'top-headlines',
 Sources = 'sources'
 }
+export interface GetRespParams {
+endpoint: string;
+options?: UrlParams;
+}

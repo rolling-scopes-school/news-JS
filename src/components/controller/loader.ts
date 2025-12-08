@@ -1,4 +1,4 @@
-import { UrlParams, Callback, NewsApiResponse } from "../../types/types";
+import { UrlParams, Callback, GetRespParams } from "../../types/types";
 
 class Loader {
     private baseLink: string;
@@ -9,13 +9,9 @@ class Loader {
         this.options = options;
     }
 
-    getResp(
-        { endpoint, options = {} }: {endpoint: string, options: UrlParams},
-
-        callback = () => {
-            console.error('No callback for GET response');
-        }
-    ) {
+    getResp<T>(
+        { endpoint, options = {} }: GetRespParams,
+        callback: Callback<T>): void {
         this.load('GET', endpoint, callback, options);
     }
 
@@ -42,7 +38,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method: string, endpoint: string, callback: Callback<NewsApiResponse>, options: UrlParams = {}) {
+    load<T>(method: string, endpoint: string, callback: Callback<T>, options: UrlParams = {}): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler.bind(this))
             .then((res) => res.json())
