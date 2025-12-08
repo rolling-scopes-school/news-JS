@@ -1,26 +1,4 @@
-interface RequestOptions{
-endpoint: string;
-options?: UrlParams;
-}
-interface ApiResponse{
-    status: 'ok' | 'error',
-    code?: string,
-    message?: string
-}
-type UrlParams = {
-    apiKey?: string,
-    category?: string,
-    language?: string,
-    country?: string,
-    q?: string,
-    source?: string,
-    pageSize?: string,
-    page?: string,
-    sortby?: string,
-    [key: string]: string | undefined
-
-}
-type Callback<T = ApiResponse> = (data: T) => void;
+import { UrlParams, Callback, NewsApiResponse } from "../../types/types";
 
 class Loader {
     private baseLink: string;
@@ -64,7 +42,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method: string, endpoint: string, callback: Callback, options: UrlParams = {}) {
+    load(method: string, endpoint: string, callback: Callback<NewsApiResponse>, options: UrlParams = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler.bind(this))
             .then((res) => res.json())
