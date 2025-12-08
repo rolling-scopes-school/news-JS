@@ -39,3 +39,23 @@ footer .copyright a:hover {
 footer .copyright:before {
     content: '©';
 }
+body {
+    width: 100%;
+
+}
+h1{
+    width: 80%;
+    margin: 0 auto;
+}
+main{
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+}
+.sources.buttons{
+    flex-wrap: wrap;
+    height: 100%;
+}
