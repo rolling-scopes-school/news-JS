@@ -20,15 +20,21 @@ footer {
     justify-content: center;
 }
 footer .copyright {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     font-size: 14px;
     color: #333;
     text-align: center;
 }
 footer .copyright a {
     color: #444;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 footer .copyright a:hover {
-    color: #555;
+    color: #888;
 }
 footer .copyright:before {
     content: '©';
