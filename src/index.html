@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>NewsPortal</title>
+        <title>News Portal</title>
     </head>
     <body>
         <header>
@@ -15,9 +15,15 @@
             <div class="news"></div>
         </main>
         <footer>
-            <p class="copyright">
-                Copyright <a href="https://newsapi.org">NewsAPI</a>
-            </p>
+            <div class="footer-content">
+                <p class="copyright">
+                    © <span id="year">2026</span>
+                    <a href="https://github.com/your-github-username" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </p>
+                <a href="https://rs.school/courses/javascript" target="_blank" rel="noopener noreferrer" class="rs-school-link">
+                    <img src="https://rs.school/_next/static/media/rss-logo.c19ce1b4.svg" alt="RS School" class="rs-logo" />
+                </a>
+            </div>
         </footer>
 
         <template id="sourceItemTemp">
@@ -45,5 +51,9 @@
                 </div>
             </div>
         </template>
+
+        <script>
+            document.getElementById('year').textContent = new Date().getFullYear().toString();
+        </script>
     </body>
 </html>
