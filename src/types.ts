@@ -12,3 +12,14 @@ export interface NewsItem {
     description: string;
     url: string;
 }
+
+export interface SourceResponse {
+    sources: Source[];
+    status: string;
+}
+
+export interface NewsResponse {
+    articles: NewsItem[];
+    status: string;
+    totalResults: number;
+}
