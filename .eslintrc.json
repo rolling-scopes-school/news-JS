@@ -1,21 +1,31 @@
 {
-    "plugins": ["prettier", "import"],
-    "extends": [
-        "plugin:prettier/recommended",
-        "prettier"
-    ],
+    "root": true,
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaVersion": 2020,
-        "sourceType": "module"
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project": "./tsconfig.json"
     },
     "env": {
-        "es6": true,
+        "es2022": true,
         "browser": true,
         "node": true
     },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended"
+    ],
     "rules": {
-        "no-debugger": "off",
-        "no-console": 0,
-        "class-methods-use-this": "off"
+        "@typescript-eslint/no-explicit-any": "error",
+        "max-lines-per-function": ["error", 40],
+        "@typescript-eslint/array-type": ["error", { "default": "array" }],
+        "@typescript-eslint/explicit-member-accessibility": [
+            "error",
+            { "accessibility": "explicit", "overrides": { "constructors": "off" } }
+        ],
+        "@typescript-eslint/explicit-function-return-type": "error",
+        "@typescript-eslint/no-unnecessary-type-assertion": "error",
+        "@typescript-eslint/no-non-null-assertion": "error"
     }
 }
