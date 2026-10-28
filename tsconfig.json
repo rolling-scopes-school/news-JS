@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "types": ["node"],
+        "sourceMap": true,
+        "noUncheckedIndexedAccess": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "exactOptionalPropertyTypes": true,
+        "verbatimModuleSyntax": true,
+        "moduleDetection": "force",
+        "skipLibCheck": true,
+        "allowJs": true,
+        "outDir": "./dist",
+        "rootDir": "./src",
+    },
+    "include": ["src"]
+}
