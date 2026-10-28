@@ -5,7 +5,9 @@
     height: 120px;
     overflow: auto;
     align-items: center;
-    font: 300 1em 'Fira Sans', sans-serif;
+    font:
+        300 1em 'Fira Sans',
+        sans-serif;
 }
 
 .source__item {
