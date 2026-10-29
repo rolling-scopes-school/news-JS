@@ -1,16 +1,17 @@
 export interface Source {
-    id: string;
+    id: string | null;
     name: string;
 }
 
 export interface NewsItem {
-    urlToImage: string;
-    author: string;
+    urlToImage: string | null;
+    author: string | null;
     publishedAt: string;
     source: Source;
     title: string;
-    description: string;
+    description: string | null;
     url: string;
+    content: string | null;
 }
 
 export interface SourceResponse {
