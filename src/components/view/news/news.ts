@@ -20,9 +20,7 @@ class News {
             clone.querySelector('.news__item')?.classList.add('alt');
         }
 
-        const metaPhoto = clone.querySelector(
-            '.news__meta-photo',
-        ) as HTMLElement;
+        const metaPhoto = clone.querySelector<HTMLElement>('.news__meta-photo');
         if (metaPhoto) {
             const image = item.urlToImage || 'img/news_placeholder.jpg';
             metaPhoto.style.backgroundImage = `url(${image})`;
@@ -47,9 +45,8 @@ class News {
     }
 
     public draw(data: NewsItem[]): void {
-        const newsItemTemp = document.querySelector(
-            '#newsItemTemp',
-        ) as HTMLTemplateElement;
+        const newsItemTemp =
+            document.querySelector<HTMLTemplateElement>('#newsItemTemp');
         if (!newsItemTemp) return;
 
         const fragment = document.createDocumentFragment();
