@@ -10,10 +10,10 @@
     },
     "repository": {
         "type": "git",
-        "url": ""
+        "url": "https://github.com/Vesselredrex/news-JS.git"
     },
     "keywords": [],
-    "author": "Aleh Serhiyenia",
+    "author": "Dymitr Czykanenko",
     "license": "ISC",
     "homepage": "",
     "devDependencies": {
