@@ -74,3 +74,58 @@ footer .copyright::before {
         padding: 24px 12px;
     }
 }
+
+/* Footer */
+
+.footer {
+    width: 100%;
+    min-height: 100px;
+    padding: 24px 20px;
+    margin-top: 40px;
+    border-top: 1px solid #333842;
+}
+
+.footer__content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer__github {
+    color: #70d6ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer__github:hover {
+    color: #69db7e;
+}
+
+.footer__year {
+    color: #aaa;
+    font-size: 14px;
+}
+
+.footer__school {
+    display: inline-flex;
+    align-items: center;
+}
+
+.footer__school img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 480px) {
+    .footer__content {
+        flex-direction: column;
+        justify-content: center;
+        gap: 16px;
+        text-align: center;
+    }
+}
