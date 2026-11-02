@@ -4,12 +4,12 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "types": ["node"],
     "strict": true,
     "noImplicitAny": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "allowJs": true,
     "rootDir": "./src",
     "outDir": "./dist"
   },
