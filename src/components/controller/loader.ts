@@ -1,10 +1,17 @@
+import SourcesResponse  from '../models/sourcesResponse';
+import NewsResponse from '../models/newsResponse';
 export enum Endpoint{
     Sources = 'sources',
     News = 'everything',
 }
 
-interface RequestConfig {
-    endpoint: Endpoint;
+interface ResponseMap{
+    [Endpoint.News]: NewsResponse;
+    [Endpoint.Sources]: SourcesResponse;
+}
+
+interface RequestConfig<E extends Endpoint> {
+    endpoint: E;
     options?: Record<string, string>;
 }
 
@@ -17,10 +24,11 @@ class Loader {
         this.options = options;
     }
 
-    public getResp(
-         {endpoint,options = {}}: RequestConfig ,
-        callback: (data: unknown) => void ) : void {
-        this.load('GET', endpoint, callback, options);
+    public getResp<E extends Endpoint>(
+        config: RequestConfig<E>,
+        callback: (data: ResponseMap[E]) => void
+    ): void {
+        this.load('GET', config, callback);
     }
 
     private errorHandler(res: Response): Response {
@@ -44,15 +52,16 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    private load(
+    private load<E extends Endpoint>(
         method: string,
-        endpoint: Endpoint,
-        callback: (data: unknown) => void,
-        options: Record<string, string> = {}
-    ) : void {
+        { endpoint, options = {} }: RequestConfig<E>,
+        callback: (data: ResponseMap[E]) => void,
+    ): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then((res: Response) => this.errorHandler(res))
-            .then((res: Response) => res.json())
+            .then((res: Response) => res.json() as
+                Promise<ResponseMap[E]>)
+
             .then((data) => {
                 callback(data);
             })
