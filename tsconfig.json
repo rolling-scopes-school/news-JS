@@ -2,13 +2,15 @@
   "compilerOptions": {
     "target": "ES6",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "strict": true,
     "noImplicitAny": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist/"
+    "outDir": "./dist/",
+    "rootDir": "./src", 
+    "types": ["node"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

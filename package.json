@@ -17,11 +17,12 @@
     "license": "ISC",
     "homepage": "",
     "devDependencies": {
+        "@types/node": "^26.6.6",
         "@typescript-eslint/eslint-plugin": "^8.72.1",
         "@typescript-eslint/parser": "^8.72.1",
         "clean-webpack-plugin": "^4.0.0",
         "copy-webpack-plugin": "^12.0.2",
-        "css-loader": "^6.10.0",
+        "css-loader": "^6.11.0",
         "dotenv-webpack": "^8.0.1",
         "eslint": "^8.57.1",
         "eslint-config-prettier": "^9.1.0",
