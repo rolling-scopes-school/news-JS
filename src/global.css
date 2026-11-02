@@ -33,3 +33,40 @@ footer .copyright a:hover {
 footer .copyright:before {
     content: '©';
 }
+/* Базовый адаптив для мобильных устройств */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
+    
+    .sources.buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .news__item {
+        width: 100%;
+    }
+}
+
+/* Красиво оформляем футер */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #1a1a1a;
+    color: white;
+}
+
+.footer-info {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.footer-info a {
+    color: #4da6ff;
+    text-decoration: none;
+}
