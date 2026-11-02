@@ -3,6 +3,7 @@ const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const DotenvWebpackPlugin = require('dotenv-webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin'); // <-- ДОБАВЛЕНО
 
 const baseConfig = {
     entry: path.resolve(__dirname, './src/index.ts'),
@@ -34,6 +35,12 @@ const baseConfig = {
             filename: 'index.html',
         }),
         new CleanWebpackPlugin(),
+        // <-- ДОБАВЛЕНО: копирует папку mocks в папку dist при сборке
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: 'src/mocks', to: 'mocks' },
+            ],
+        }),
     ],
 };
 

@@ -1,3 +1,10 @@
+const path = require('path');
+
 module.exports = {
     mode: 'production',
+    output: {
+        path: path.resolve(__dirname, './dist'),
+        filename: 'index.js',
+        publicPath: './', // ВАЖНО для GitHub Pages
+    },
 };

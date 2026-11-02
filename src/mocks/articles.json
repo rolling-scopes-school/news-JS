@@ -1,0 +1,45 @@
+{
+  "status": "ok",
+  "totalResults": 3,
+  "articles": [
+    {
+      "source": {
+        "id": "bbc-news",
+        "name": "BBC News"
+      },
+      "author": "BBC News",
+      "title": "Breaking News: Technology Changes the World",
+      "description": "This is a sample news article description. In a real application, this would contain actual news content.",
+      "url": "https://www.bbc.com/news",
+      "urlToImage": "https://via.placeholder.com/400x300/007bff/ffffff?text=BBC+News",
+      "publishedAt": "2026-11-03T10:00:00Z",
+      "content": "This is sample content for demonstration purposes."
+    },
+    {
+      "source": {
+        "id": "cnn",
+        "name": "CNN"
+      },
+      "author": "CNN",
+      "title": "World News: Important Events Today",
+      "description": "Another sample news article showing how the application works on GitHub Pages.",
+      "url": "https://www.cnn.com",
+      "urlToImage": "https://via.placeholder.com/400x300/dc3545/ffffff?text=CNN+News",
+      "publishedAt": "2026-11-03T12:00:00Z",
+      "content": "Sample content from CNN."
+    },
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "TechCrunch",
+      "title": "Tech News: New Startup Raises Millions",
+      "description": "Sample technology news about startups and innovation.",
+      "url": "https://techcrunch.com",
+      "urlToImage": "https://via.placeholder.com/400x300/28a745/ffffff?text=Tech+News",
+      "publishedAt": "2026-11-03T14:00:00Z",
+      "content": "Sample tech news content."
+    }
+  ]
+}

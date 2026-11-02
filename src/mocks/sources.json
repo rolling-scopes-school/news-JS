@@ -1,0 +1,32 @@
+{
+  "status": "ok",
+  "sources": [
+    {
+      "id": "bbc-news",
+      "name": "BBC News",
+      "description": "Use BBC News for breaking news, videos, and the latest top stories in world news, business, politics, health and pop culture.",
+      "url": "http://www.bbc.co.uk/news",
+      "category": "general",
+      "language": "en",
+      "country": "gb"
+    },
+    {
+      "id": "cnn",
+      "name": "CNN",
+      "description": "View the latest news and breaking news today for U.S., world, weather, entertainment, politics and health.",
+      "url": "http://us.cnn.com",
+      "category": "general",
+      "language": "en",
+      "country": "us"
+    },
+    {
+      "id": "techcrunch",
+      "name": "TechCrunch",
+      "description": "TechCrunch is a leading technology media property dedicated to obsessively profiling startups, reviewing new Internet products, and breaking tech news.",
+      "url": "https://techcrunch.com",
+      "category": "technology",
+      "language": "en",
+      "country": "us"
+    }
+  ]
+}

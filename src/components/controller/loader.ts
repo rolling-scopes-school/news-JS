@@ -15,7 +15,33 @@ class Loader {
         { endpoint, options = {} }: GetRespParams,
         callback: Callback<T> = (): void => console.error('No callback for GET response')
     ): void {
-        this.load<T>('GET', endpoint, callback, options);
+        // Проверяем, запущены ли мы на GitHub Pages
+        const isGitHubPages = window.location.hostname.includes('github.io');
+        
+        if (isGitHubPages) {
+            // Загружаем мок-данные
+            this.loadMock(endpoint, callback);
+        } else {
+            // Загружаем реальные данные с API
+            this.load<T>('GET', endpoint, callback, options);
+        }
+    }
+
+    // Метод для загрузки мок-данных
+    private loadMock<T>(endpoint: Endpoint, callback: Callback<T>): void {
+        const mockFile = endpoint === Endpoint.Sources ? 'sources.json' : 'articles.json';
+        const mockPath = `./mocks/${mockFile}`;
+
+        fetch(mockPath)
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error(`Failed to load mock: ${res.statusText}`);
+                }
+                return res;
+            })
+            .then((res) => res.json() as Promise<T>)
+            .then((data) => callback(data))
+            .catch((err: Error) => console.error('Mock error:', err));
     }
 
     private errorHandler(res: Response): Response {
