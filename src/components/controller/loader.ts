@@ -1,8 +1,8 @@
-type QueryOptions = Record<string, string | undefined>;
+type QueryOptions = Readonly<Record<string, string | undefined>>;
 
 interface RequestConfig {
     endpoint: string;
-    options?: QueryOptions;
+    options?: Partial<QueryOptions>;
 }
 
 type ResponseCallback<T> = (data: T) => void;

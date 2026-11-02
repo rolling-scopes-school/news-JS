@@ -34,3 +34,5 @@ export interface NewsResponse {
     totalResults: number;
     articles: Article[];
 }
+
+export type NewsPreview = Pick<Article, 'title' | 'description' | 'url'>;
