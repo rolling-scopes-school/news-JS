@@ -1,0 +1,6 @@
+{
+    "rules": {
+        "class-style": ["error", "bem"],
+        "id-style": ["error", "dash"]
+    }
+}
