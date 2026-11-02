@@ -9,12 +9,16 @@ export default defineConfig([
         plugins: { js },
         extends: ['js/recommended'],
         languageOptions: {
-            globals: globals.browser,
+            ...globals.browser,
+            ...globals.node,
         },
     },
     {
         files: ['**/*.{ts,mts,cts}'],
         extends: [js.configs.recommended, ...tseslint.configs.recommended],
+        rules: {
+            '@typescript-eslint/no-explicit-any': 'error',
+        },
         languageOptions: {
             globals: globals.browser,
         },

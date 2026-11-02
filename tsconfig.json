@@ -5,6 +5,8 @@
     // "rootDir": "./src",
     // "outDir": "./dist",
     "allowJs": true,
+    "noEmit": true,
+    "noImplicitAny": true,
     "strict": true,
 
     // Environment Settings
@@ -36,7 +38,6 @@
     // "noPropertyAccessFromIndexSignature": true,
 
     // Recommended Options
-    "strict": true,
     "jsx": "react-jsx",
     "verbatimModuleSyntax": true,
     "isolatedModules": true,
