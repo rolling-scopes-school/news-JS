@@ -39,13 +39,15 @@ class Loader {
 
     private makeUrl(options: QueryOptions, endpoint: string): string {
         const urlOptions = { ...this.options, ...options };
-        let url = `${this.baseLink}${endpoint}?`;
+        const url = new URL(endpoint, `${this.baseLink.replace(/\/+$/, '')}/`);
 
-        Object.keys(urlOptions).forEach((key) => {
-            url += `${key}=${urlOptions[key]}&`;
+        Object.entries(urlOptions).forEach(([key, value]) => {
+            if (value !== undefined) {
+                url.searchParams.set(key, value);
+            }
         });
 
-        return url.slice(0, -1);
+        return url.toString();
     }
 
     private load<T>(method: string, endpoint: string, callback: ResponseCallback<T>, options: QueryOptions = {}): void {
