@@ -1,5 +1,6 @@
 import AppLoader from './appLoader';
 import type { NewsResponse, SourcesResponse } from '../../types/news';
+import { demoSources, demoArticles } from '../../data/demo';
 
 enum ApiEndpoint {
     Sources = 'sources',
@@ -8,6 +9,11 @@ enum ApiEndpoint {
 
 class AppController extends AppLoader {
     public getSources(callback: (data: SourcesResponse) => void): void {
+        if (process.env.DEMO_MODE === 'true') {
+            callback(demoSources);
+            return;
+        }
+
         super.getResp<SourcesResponse>(
             {
                 endpoint: ApiEndpoint.Sources,
@@ -33,6 +39,19 @@ class AppController extends AppLoader {
         const sourceId = sourceItem.getAttribute('data-source-id');
 
         if (!sourceId || newsContainer.getAttribute('data-source') === sourceId) {
+            return;
+        }
+
+        if (process.env.DEMO_MODE === 'true') {
+            const articles = demoArticles[sourceId] ?? [];
+
+            callback({
+                status: 'ok',
+                totalResults: articles.length,
+                articles,
+            });
+
+            newsContainer.setAttribute('data-source', sourceId);
             return;
         }
 
