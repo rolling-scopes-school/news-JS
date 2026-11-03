@@ -1,35 +1,131 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-width: 320px;
+}
+
 body {
+    margin: 0;
+    min-width: 320px;
     color: #fff;
     background: #17181c;
-    font-family: sans-serif;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
 }
 
 header {
-    padding: 10px 30px;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 24px 30px;
 }
 
 header h1 {
-    font-size: 40px;
+    margin: 0;
+    font-size: clamp(28px, 4vw, 40px);
     font-weight: 800;
 }
 
+main {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
 footer {
-    height: 100px;
+    min-height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
+
 footer .copyright {
     font-size: 14px;
-    color: #333;
+    color: #aaa;
     text-align: center;
 }
+
 footer .copyright a {
-    color: #444;
+    color: #70d6ff;
 }
+
 footer .copyright a:hover {
-    color: #555;
+    color: #69db7e;
 }
-footer .copyright:before {
+
+footer .copyright::before {
     content: '©';
+}
+
+@media (max-width: 639px) {
+    header {
+        padding: 20px 16px;
+    }
+
+    main {
+        padding: 0 12px;
+    }
+
+    footer {
+        padding: 24px 12px;
+    }
+}
+
+/* Footer */
+
+.footer {
+    width: 100%;
+    min-height: 100px;
+    padding: 24px 20px;
+    margin-top: 40px;
+    border-top: 1px solid #333842;
+}
+
+.footer__content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer__github {
+    color: #70d6ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer__github:hover {
+    color: #69db7e;
+}
+
+.footer__year {
+    color: #aaa;
+    font-size: 14px;
+}
+
+.footer__school {
+    display: inline-flex;
+    align-items: center;
+}
+
+.footer__school img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 480px) {
+    .footer__content {
+        flex-direction: column;
+        justify-content: center;
+        gap: 16px;
+        text-align: center;
+    }
 }
